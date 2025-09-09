@@ -1,0 +1,14 @@
+import React from 'react';
+import ProductCard from './ProductCard';
+
+const HeroParallax = ({ products }) => {
+    return (
+        <div className="hero-parallax">
+            {products.map(product => (
+                <ProductCard key={product.id} product={product} />
+            ))}
+        </div>
+    );
+};
+
+export default HeroParallax;

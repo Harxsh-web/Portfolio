@@ -25,7 +25,7 @@ export const products = [
     },
 
     {
-      title: "RateNB",
+      title: "RateNB.",
       link: "https://ratenb.com/",
       thumbnail:
         "/projectImage/ratenb.png",
@@ -33,19 +33,19 @@ export const products = [
 
   
     {
-      title: "MaxPOD Dashboard",
+      title: "MaxPOD Dashboard1",
       link: "https://maxpodteam.com/",
       thumbnail:
         "/projectImage/maxpod.png",
     },
     {
-        title: "BeeTennis",
+        title: "BeeTennis2",
         link: "https://beetennis.pages.dev/",
         thumbnail:
         "/projectImage/beetennis.png",
     },
     {
-        title: "Luke Mikic",
+        title: "Luke Mikic3",
         link: "https://lukemikic.com/",
         thumbnail:
         "/projectImage/luke.png",

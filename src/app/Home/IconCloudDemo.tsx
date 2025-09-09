@@ -58,7 +58,7 @@ export function IconCloudDemo() {
                 {slugs.map((slug) => (
                     <span
                         key={slug}
-                        className="text-neutral-100 dark:text-neutral-700 text-sm px-3 py-1 border rounded-md border-black bg-black dark:bg-white/10 dark:border-white/20"
+                        className="text-neutral-100 dark:text-black dark:text-semibold text-sm px-3 py-1 border rounded-md border-black bg-black dark:bg-white dark:border-white"
                     >
                         {slug.charAt(0).toUpperCase() + slug.slice(1)}
                     </span>

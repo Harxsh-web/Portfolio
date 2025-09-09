@@ -6,6 +6,9 @@ import { ProjectCard } from "./ProjectCard";
 import { TimelineDemo } from "./TimelineDemo";
 import { Icons } from "@/components/ui/icons";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
+import { Contact } from "./Contact";
+import { FloatingDockDemo } from "./FloatingDockDemo";
+import { Pointer } from "@/components/magicui/pointer";
 
 export const HeroSection = () => {
   const BLUR_FADE_DELAY = 0.1;
@@ -34,10 +37,10 @@ export const HeroSection = () => {
         technologies: ["React", "Typescript", "Firebase"],
         image: "/projectImage/beetennis.png",
         video: null,
-        href: "#",
+        href: "https://beetennis.pages.dev/",
         links: [{
           type: "Website",
-          href: "https://maxpodteam.com/",
+          href: "https://beetennis.pages.dev/",
           icon: <Icons.globe className="size-3" />,
         },]
       },
@@ -48,7 +51,7 @@ export const HeroSection = () => {
         technologies: ["React", "Spring Boot", "MySQL"],
         image: "/projectImage/shayarify.png",
         video: null,
-        href: "#",
+        href: "https://shayarify.netlify.app/",
         links: [{
           type: "Website",
           href: "https://shayarify.netlify.app/",
@@ -67,7 +70,7 @@ export const HeroSection = () => {
         technologies: ["React"],
         image: "/projectImage/luke.png",
         video: null,
-        href: "#",
+        href: "https://lukemikic.com/",
         links: [{
           type: "Website",
           href: "https://lukemikic.com/",
@@ -106,14 +109,14 @@ export const HeroSection = () => {
 
 
   return (
-    <div>
+    <div className="dark:bg-black">
 
       <HeroParallaxDemo />
       <TimelineDemo />
       <IconCloudDemo />
       {/* Projects Section */}
       <section id="projects">
-        <div className="space-y-12 w-full py-12">
+        <div className="space-y-12 w-full py-12 dark:bg-black">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -139,7 +142,8 @@ export const HeroSection = () => {
               <BlurFade
                 key={project.title}
                 delay={BLUR_FADE_DELAY * 12 + id * 0.05}
-              >
+                >
+                
                 <ProjectCard
                   href={project.href}
                   title={project.title}
@@ -155,6 +159,9 @@ export const HeroSection = () => {
           </div>
         </div>
       </section>
+
+      <Contact/>
+      <FloatingDockDemo/>
     </div>
   )
 }
