@@ -53,15 +53,19 @@ export function FloatingDockDemo() {
         },
     ];
     return (
-        <div className="fixed bottom-2 md:bottom-4 left-0 w-full flex items-center justify-center px-2">
-            <div className="w-full md:w-auto flex justify-center">
-                <FloatingDock
-                    desktopClassName="hidden md:flex"
-                    mobileClassName="flex md:hidden w-full justify-start gap-4   p-2 "
-                    items={links}
-                />
-            </div>
-        </div>
+      <div className="fixed bottom-2 md:bottom-4 left-0 w-full flex items-center justify-center px-2">
+  <div className="w-full md:w-auto flex justify-center">
+    <FloatingDock
+      desktopClassName="hidden md:flex"
+      mobileClassName="flex md:hidden w-full justify-center gap-6 
+          
+         px-4 py-3 
+        pb-[env(safe-area-inset-bottom)]"
+      items={links}
+    />
+  </div>
+</div>
+
 
 
     );
