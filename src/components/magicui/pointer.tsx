@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import {
   AnimatePresence,
@@ -8,18 +8,9 @@ import {
   motion,
   useMotionValue,
 } from "motion/react";
-import { useEffect, useRef, useState } from "react";
 
 interface PointerProps extends Omit<HTMLMotionProps<"div">, "ref"> {}
 
-/**
- * A custom pointer component that displays an animated cursor.
- * Add this as a child to any component to enable a custom pointer when hovering.
- * You can pass custom children to render as the pointer.
- *
- * @component
- * @param {PointerProps} props - The component props
- */
 export function Pointer({
   className,
   style,
@@ -30,19 +21,30 @@ export function Pointer({
   const y = useMotionValue(0);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isClickable, setIsClickable] = useState<boolean>(false);
+  const [enabled, setEnabled] = useState<boolean>(true); // ✅ control pointer
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // ✅ Disable pointer below 768px (mobile/tablet)
+    const checkScreen = () => {
+      setEnabled(window.innerWidth >= 768);
+    };
+
+    checkScreen(); // run once
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return; // ❌ don't activate on mobile
+
     if (typeof window !== "undefined" && containerRef.current) {
       const parentElement = containerRef.current.parentElement;
-
       if (parentElement) {
-        // Add a scoped class to the parent to hide the native cursor
         const classNameScope = "magicui-custom-cursor";
         const styleId = "magicui-custom-cursor-style";
         let createdStyle = false;
 
-        // Create a style tag if it doesn't already exist
         if (!document.getElementById(styleId)) {
           const styleEl = document.createElement("style");
           styleEl.id = styleId;
@@ -94,7 +96,10 @@ export function Pointer({
         };
       }
     }
-  }, [x, y]);
+  }, [x, y, enabled]);
+
+  // ✅ Hide pointer on mobile
+  if (!enabled) return null;
 
   return (
     <>
@@ -108,18 +113,9 @@ export function Pointer({
               left: x,
               ...style,
             }}
-            initial={{
-              scale: 0,
-              opacity: 0,
-            }}
-            animate={{
-              scale: 1,
-              opacity: 1,
-            }}
-            exit={{
-              scale: 0,
-              opacity: 0,
-            }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
             {...props}
           >
             {children || (
