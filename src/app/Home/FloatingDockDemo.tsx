@@ -48,17 +48,21 @@ export function FloatingDockDemo() {
                 <AnimatedThemeToggler />
             ),
             href: "#",
-           
+
 
         },
     ];
     return (
-        <div className="flex items-center justify-center w-full fixed bottom-2  md:bottom-4">
-            <FloatingDock
-                desktopClassName="block"
-                mobileClassName="translate-y-0"
-                items={links}
-            />
+        <div className="fixed bottom-2 md:bottom-4 left-0 w-full flex items-center justify-center px-2">
+            <div className="w-full md:w-auto flex justify-center">
+                <FloatingDock
+                    desktopClassName="hidden md:flex"
+                    mobileClassName="flex md:hidden w-full justify-start gap-4   p-2 "
+                    items={links}
+                />
+            </div>
         </div>
+
+
     );
 }
