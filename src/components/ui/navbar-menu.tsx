@@ -12,7 +12,7 @@ const transition = {
   stiffness: 100,
   restDelta: 0.001,
   restSpeed: 0.001,
-};
+} as const ;
 
 export const MenuItem = ({
   setActive,
