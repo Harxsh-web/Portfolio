@@ -8,6 +8,7 @@ import {
   MotionValue,
 } from "motion/react";
 import Image from "next/image";
+import { IoCloudDownloadOutline } from "react-icons/io5";
 
 
 export const HeroParallax = ({
@@ -113,6 +114,18 @@ export const Header = () => {
           that are fast, functional, and user-focused, ensuring a balance between innovation and 
           practicality.
       </p>
+      <div>
+       <a
+  href="https://drive.google.com/file/d/1vqG1o7W7_7CaqSt4oHA4hXe-hl9X-gL3/view?usp=sharing"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-8 px-6 py-3 inline-flex bg-black text-white rounded-lg flex items-center gap-2 border border-transparent hover:border-black hover:bg-white hover:text-black transition duration-300 ease-in-out"
+>
+  <IoCloudDownloadOutline /> Download CV
+</a>
+
+
+      </div>
     </div>
   );
 };
