@@ -10,7 +10,6 @@ import {
 import Image from "next/image";
 import { IoCloudDownloadOutline } from "react-icons/io5";
 
-
 export const HeroParallax = ({
   products,
 }: {
@@ -23,6 +22,7 @@ export const HeroParallax = ({
   const firstRow = products.slice(0, 5);
   const secondRow = products.slice(5, 10);
   const thirdRow = products.slice(10, 15);
+
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -55,10 +55,11 @@ export const HeroParallax = ({
     useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
     springConfig
   );
+
   return (
     <div
       ref={ref}
-      className="h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[200vh] md:h-[300vh] py-20 md:py-40 overflow-x-hidden overflow-y-auto antialiased relative flex flex-col perspective-[1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -68,9 +69,9 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+        {/* First Row */}
+        <motion.div className="flex flex-row-reverse md:flex-row-reverse space-x-4 md:space-x-20 space-x-reverse md:space-x-reverse mb-20">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -79,7 +80,9 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-20 ">
+
+        {/* Second Row */}
+        <motion.div className="flex flex-row space-x-4 md:space-x-20 mb-20">
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -88,7 +91,9 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
+
+        {/* Third Row */}
+        <motion.div className="flex flex-row-reverse md:flex-row-reverse space-x-4 md:space-x-20 space-x-reverse md:space-x-reverse">
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
@@ -104,27 +109,25 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
+    <div className="max-w-7xl relative mx-auto py-10 md:py-20 px-4 w-full">
       <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
         Hi, I’m Harsh 👋
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-        A developer who loves creating impactful digital products. With expertise in React,
-         Next.js, TailwindCSS, Spring Boot, and API integration, I design and develop applications
-          that are fast, functional, and user-focused, ensuring a balance between innovation and 
-          practicality.
+      <p className="max-w-2xl text-base md:text-xl mt-4 md:mt-8 dark:text-neutral-200">
+        A developer who loves creating impactful digital products. With expertise
+        in React, Next.js, TailwindCSS, Spring Boot, and API integration, I
+        design and develop applications that are fast, functional, and
+        user-focused, ensuring a balance between innovation and practicality.
       </p>
       <div>
-       <a
-  href="https://drive.google.com/file/d/1vqG1o7W7_7CaqSt4oHA4hXe-hl9X-gL3/view?usp=sharing"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="mt-8 px-6 py-3 inline-flex bg-black text-white rounded-lg flex items-center gap-2 border border-transparent hover:border-black hover:bg-white hover:text-black transition duration-300 ease-in-out"
->
-  <IoCloudDownloadOutline /> Download CV
-</a>
-
-
+        <a
+          href="https://drive.google.com/file/d/1vqG1o7W7_7CaqSt4oHA4hXe-hl9X-gL3/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 md:mt-8 px-6 py-3 inline-flex bg-black text-white rounded-lg flex items-center gap-2 border border-transparent hover:border-black hover:bg-white hover:text-black transition duration-300 ease-in-out"
+        >
+          <IoCloudDownloadOutline /> Download CV
+        </a>
       </div>
     </div>
   );
@@ -150,11 +153,11 @@ export const ProductCard = ({
         y: -20,
       }}
       key={product.title}
-      className="group/product h-96 w-[30rem] relative shrink-0"
+      className="group/product h-64 md:h-96 w-full md:w-[30rem] shrink-0 relative"
     >
       <a
         href={product.link}
-        className="block group-hover/product:shadow-2xl "
+        className="block group-hover/product:shadow-2xl"
         target="_blank"
       >
         <Image
