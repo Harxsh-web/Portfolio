@@ -125,3 +125,7 @@
     animation: none;
     mix-blend-mode: normal;
 }
+::selection {
+  background-color: black;
+  color: white;
+}
